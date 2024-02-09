@@ -24,8 +24,20 @@ export default async function RootLayout({
   return (
     <html lang="fr">
       <body className={inter.className}>
-        <nav>{!!session && <span>🟢</span>}</nav>
-        <nav>{!session && <span>🔴</span>}</nav>
+        <nav>
+          {!!session && (
+            <p className=" m-4 border border-gray-200 p-2 rounded-xl text-gray-500">
+              Statut : 🟢
+            </p>
+          )}
+        </nav>
+        <nav>
+          {!session && (
+            <p className=" m-4 border border-gray-200 p-2 rounded-xl text-gray-500">
+              Statut : 🔴
+            </p>
+          )}
+        </nav>
         {children}
         <Toaster richColors />
       </body>

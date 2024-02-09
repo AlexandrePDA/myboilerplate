@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="h-full flex flex-col items-center justify-center mt-8 font-bold text-xl">
+    <div className="h-full flex flex-col items-center justify-center mt-8 font-bold text-xl mx-auto">
       <h1>
         🎉 Boilerplate NextJs + Typescript + Nextauth made by @AlexandrePDA 🎉
       </h1>

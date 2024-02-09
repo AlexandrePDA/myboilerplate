@@ -1,5 +1,6 @@
 import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth";
+import ButtonSignOut from "@/components/ButtonSignOut";
 import { redirect } from "next/navigation";
 
 export default async function DashboardPage() {
@@ -8,25 +9,22 @@ export default async function DashboardPage() {
   if (!session) return redirect("/");
 
   return (
-    <div>
-      Dasboard
-      {session ? (
+    <div className="border p-2 m-4 rounded-xl">
+      <p className="font-bold">Dasboard</p>
+      <div>
+        <p>user: {session.user.email}</p>
+        <p>id: {session.user.id}</p>
+        <p>linkedin: {session.user.linkedin}</p>
         <div>
-          <p>user: {session.user.email}</p>
-          <p>id: {session.user.id}</p>
-          <p>linkedin: {session.user.linkedin}</p>
-          <div>
-            {session.user.isPremium ? (
-              <p>isPremium : ✅</p>
-            ) : (
-              <p>isPremium : ❌</p>
-            )}
-          </div>
-          <p>github: {session.user.github}</p>
+          {session.user.isPremium ? (
+            <p>isPremium : ✅</p>
+          ) : (
+            <p>isPremium : ❌</p>
+          )}
         </div>
-      ) : (
-        <p>Not logged in</p>
-      )}
+        <p>github: {session.user.github}</p>
+        <ButtonSignOut />
+      </div>
     </div>
   );
 }

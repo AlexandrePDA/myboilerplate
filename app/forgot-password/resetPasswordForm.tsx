@@ -54,7 +54,7 @@ export default function FormRegister() {
   }
 
   return (
-    <div className=" max-w-sm mx-auto border p-4 rounded-md mt-40">
+    <div className=" max-w-sm mx-auto border p-4 rounded-md mt-40 m-2">
       <h2 className="my-4 font-bold">🔐 Recevoir un email pour reset mdp</h2>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">

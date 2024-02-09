@@ -1,4 +1,4 @@
-# My Boilerplate Next.js avec NextAuth.js
+# 🎉 My Boilerplate Next.js avec NextAuth.js 🔐
 
 Ce projet est un boilerplate pour construire des applications web avec Next.js et NextAuth.js. Il fournit une base solide pour développer rapidement des applications web modernes avec des fonctionnalités d'authentification sécurisées.
 
@@ -9,6 +9,7 @@ Ce projet est un boilerplate pour construire des applications web avec Next.js e
 - **NextAuth.js**
 - **Prisma**
 - **Shadcn**
+- **Resend**
 
 ## Configuration
 
@@ -28,11 +29,10 @@ Ce projet est un boilerplate pour construire des applications web avec Next.js e
 
 3.  **Configuration de Prisma** :
 
-        - Exécutez les commandes suivantes pour générer les fichiers Prisma nécessaires et migrer votre base de données :
+    - Exécutez les commandes suivantes pour générer les fichiers Prisma nécessaires et migrer votre base de données :
 
-          `npx prisma generate
-
-    npx prisma db push`
+            `npx prisma generate`
+            `npx prisma db push`
 
 4.  **Démarrez l'application** :
 
@@ -41,3 +41,5 @@ Ce projet est un boilerplate pour construire des applications web avec Next.js e
 5.  **A modifier dans le code** :
 
 @/lib/mail.ts : modifier "from" par votre adresse mail
+
+Par @AlexandrePDA ✅
