@@ -37,6 +37,8 @@ export const authOptions: NextAuthOptions = {
             image: user.email,
             isPremium: user.isPremium,
             github: user.github,
+            resetPasswordToken: user.resetPasswordToken,
+            resetPasswordTokenExpiry: user.resetPasswordTokenExpiry,
           };
         }
         return null;
@@ -50,6 +52,8 @@ export const authOptions: NextAuthOptions = {
         session.user.id = token.id;
         session.user.isPremium = token.isPremium;
         session.user.github = token.github;
+        session.user.resetPasswordToken = token.resetPasswordToken;
+        session.user.resetPasswordTokenExpiry = token.resetPasswordTokenExpiry;
       }
       return session;
     },
@@ -62,6 +66,8 @@ export const authOptions: NextAuthOptions = {
       token.linkedin = existingUser?.linkedin;
       token.isPremium = existingUser?.isPremium;
       token.github = existingUser?.github;
+      token.resetPasswordToken = existingUser?.resetPasswordToken;
+      token.resetPasswordTokenExpiry = existingUser?.resetPasswordTokenExpiry;
 
       return token;
     },

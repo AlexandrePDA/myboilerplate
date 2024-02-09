@@ -15,7 +15,13 @@ export default async function DashboardPage() {
           <p>user: {session.user.email}</p>
           <p>id: {session.user.id}</p>
           <p>linkedin: {session.user.linkedin}</p>
-          <div>isPremium: {session.user.isPremium ? <p>✅</p> : <p>❌</p>}</div>
+          <div>
+            {session.user.isPremium ? (
+              <p>isPremium : ✅</p>
+            ) : (
+              <p>isPremium : ❌</p>
+            )}
+          </div>
           <p>github: {session.user.github}</p>
         </div>
       ) : (

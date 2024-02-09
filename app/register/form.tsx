@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,6 +18,8 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Email invalide" }),
@@ -52,12 +55,24 @@ export default function FormRegister() {
       if (response?.status !== 200) {
         setError(true);
         setLoading(false);
+        toast.error("Echec de l'inscription");
+
         return console.log("Échec de l'authentification");
       }
 
-      return (window.location.href = "/login");
+      // se connecter directement après l'inscription pour utiliser session
+      const signinDirectly = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+        callbackUrl: "/dashboard",
+      });
+
+      return (window.location.href = "/dashboard");
     } catch (error) {
       setError(true);
+      toast.error("Echec de l'inscription");
+
       setLoading(false);
 
       console.error("error", error);
@@ -111,7 +126,7 @@ export default function FormRegister() {
             </div>
           )}
           <Button disabled={loading} type="submit">
-            Submit
+            S'inscrire
           </Button>
         </form>
       </Form>

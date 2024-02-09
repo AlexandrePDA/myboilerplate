@@ -38,17 +38,19 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  linkedin      String?
-  isPremium     Boolean   @default(false)
-  github        String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  password      String?
-  accounts      Account[]
-  sessions      Session[]
+  id                       String    @id @default(cuid())
+  name                     String?
+  linkedin                 String?
+  isPremium                Boolean   @default(false)
+  github                   String?
+  email                    String?   @unique
+  emailVerified            DateTime?
+  image                    String?
+  password                 String?
+  accounts                 Account[]
+  sessions                 Session[]
+  resetPasswordToken       String?   @unique
+  resetPasswordTokenExpiry DateTime?
 }
 
 model VerificationToken {

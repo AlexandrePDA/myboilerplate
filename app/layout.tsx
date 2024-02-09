@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,9 +24,10 @@ export default async function RootLayout({
   return (
     <html lang="fr">
       <body className={inter.className}>
-        <nav>{!!session && <span>je suis connecté</span>}</nav>
-        <nav>{!session && <span>je suis déconnecté</span>}</nav>
+        <nav>{!!session && <span>🟢</span>}</nav>
+        <nav>{!session && <span>🔴</span>}</nav>
         {children}
+        <Toaster richColors />
       </body>
     </html>
   );

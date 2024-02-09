@@ -6,4 +6,6 @@ export interface ExtendedUser extends AdapterUser {
   linkedin?: string;
   isPremium: boolean;
   github?: string;
+  resetPasswordToken?: string;
+  resetPasswordTokenExpiry?: Date;
 }
