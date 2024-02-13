@@ -6,7 +6,9 @@ import { sendEmailWelcome } from "@/lib/mail";
 export async function POST(request: Request) {
   try {
     const { email, password } = await request.json();
-    if (!email || !password)
+    const emailToLowerCase = email.toLowerCase();
+
+    if (!emailToLowerCase || !password)
       return NextResponse.json(
         { message: "Email et mot de passe requis" },
         { status: 400 }
@@ -17,9 +19,9 @@ export async function POST(request: Request) {
         { status: 400 }
       );
 
-    console.log({ email, password });
+    console.log({ emailToLowerCase, password });
     const response = await prisma.user.findUnique({
-      where: { email: email },
+      where: { email: emailToLowerCase },
     });
     console.log("response register", { response });
     if (response) {
@@ -32,11 +34,11 @@ export async function POST(request: Request) {
     const hashedPassword = await hash(password, 10);
     const user = await prisma.user.create({
       data: {
-        email,
+        email: emailToLowerCase,
         password: hashedPassword,
       },
     });
-    await sendEmailWelcome(email);
+    await sendEmailWelcome(emailToLowerCase);
     console.log({ user });
   } catch (e) {
     console.log(e);

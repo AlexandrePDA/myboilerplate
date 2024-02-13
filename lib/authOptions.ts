@@ -15,8 +15,13 @@ export const authOptions: NextAuthOptions = {
         password: {},
       },
       async authorize(credentials, req) {
+        console.log(credentials);
+        const emailToLowerCase = credentials?.email?.toLowerCase();
+        if (!emailToLowerCase || !credentials?.password) {
+          return null;
+        }
         const response = await prisma.user.findUnique({
-          where: { email: credentials?.email },
+          where: { email: emailToLowerCase },
         });
         const user = response;
 
