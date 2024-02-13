@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { signIn } from "next-auth/react";
@@ -19,6 +20,7 @@ import { useState } from "react";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Email invalide" }),
@@ -116,8 +118,9 @@ export default function FormLogin() {
               <p>Mot de passe ou email invalide</p>
             </div>
           )}
-          <Button disabled={loading} type="submit">
-            Connexion
+          <Button disabled={loading} type="submit" className="flex gap-2">
+            {loading && <Loader2 className="h-5 w-5 animate-spin" />}
+            <p>Connexion</p>
           </Button>
         </form>
       </Form>
