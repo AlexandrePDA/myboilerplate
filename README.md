@@ -42,4 +42,4 @@ Ce projet est un boilerplate pour construire des applications web avec Next.js e
 
 @/lib/mail.ts : modifier "from" par votre adresse mail
 
-Par @AlexandrePDA ✅
+@Made with ❤️ by @AlexandrePDA
